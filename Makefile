@@ -5,7 +5,7 @@ GREEN			= \033[0;32m
 RED				= \033[0;31m
 RESET			= \033[0m
 
-LIBFT 			= lib/lft/libft.a
+LIBFT 			= lib/libft/libft.a
 
 CC 				= cc
 
@@ -19,22 +19,21 @@ REMOVE 			= rm -f
 SRCS_DIR		= ./src/
 
 SRCS 			= $(addprefix $(SRCS_DIR),\
-				error_msg.c pipex.c\
-				ft_error_msg.c )
+				error_msg.c pipex.c )
 
 all:			${NAME} ${LIBFT} 
 
 ${NAME}: 		
-				${CC} -Wall -Wextra -Werror ${SRCS} ${LIBFT} -g -o ${NAME}
+				${CC} ${SRCS} ${LIBFT} -g -o ${NAME}
 				@echo "$(NAME): $(GREEN)$(NAME) was compiled.$(RESET)"
 				@echo
 
 ${LIBFT}:
 				@echo
-				make bonus -C lib/lft
+				make bonus -C lib/libft
 
 clean:
-				make clean -C lib/lft
+				make clean -C lib/libft
 				@echo
 
 fclean:
@@ -49,15 +48,16 @@ push:
 re:				fclean all
 
 compile_libs:
-	@make -sC lib/lft
+	@make -sC lib/libft
+
 update:
 	git submodule update --init --recursive --remote
 
 run:			re
-				./${NAME} assets/maps/invalid/map-missing-W.ber
+				./${NAME} 
 
 valgrind: $(NAME)
-	$(VALGRIND) ./${NAME} assets/maps/valid/map4.ber 
+	$(VALGRIND) ./${NAME}
 
 
 .PHONY:			all clean fclean re rebonus valgrind run run_bonus makefile
