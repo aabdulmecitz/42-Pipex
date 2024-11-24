@@ -6,7 +6,7 @@
 /*   By: aabdulmecitz <aabdulmecitz@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:00:20 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/11/24 19:42:11 by aabdulmecit      ###   ########.fr       */
+/*   Updated: 2024/11/24 20:40:47 by aabdulmecit      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <string.h>
 # include <stdio.h>
 # include <sys/wait.h>
+# include <sys/types.h>
 # include <fcntl.h>
 //# include "../libft/libft.h"
 
@@ -29,9 +30,10 @@
 
 
 /* Mandatory functions */
-//void	error(void);
 char	*find_path(char *cmd, char **envp);
 void	execute(char *argv, char **envp);
+void    error_msg(char *msg);
+void    args_error();
 
 int		open_file(char *argv, int i);
 void	usage(void);
