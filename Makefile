@@ -54,7 +54,7 @@ update:
 	git submodule update --init --recursive --remote
 
 run:			re
-				./${NAME} output.txt "ls -l" "wc -l" outfile
+				./${NAME} txt1.txt "ls -l" "cat -e" txt2.txt
 
 valgrind: $(NAME)
 	$(VALGRIND) ./${NAME}
