@@ -6,7 +6,7 @@
 /*   By: aabdulmecitz <aabdulmecitz@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:00:20 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/11/24 20:40:47 by aabdulmecit      ###   ########.fr       */
+/*   Updated: 2024/11/30 04:37:53 by aabdulmecit      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ char	*find_path(char *cmd, char **envp);
 void	execute(char *argv, char **envp);
 void    error_msg(char *msg);
 void    args_error();
-
+char    *find_path(char *argv, char **envp);
+void    *free_arr(char **arr);
 int		open_file(char *argv, int i);
 void	usage(void);
+char *path_creator(char *undone_path, char *code);
+
 
 #endif

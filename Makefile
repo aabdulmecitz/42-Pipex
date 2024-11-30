@@ -19,7 +19,7 @@ REMOVE 			= rm -f
 SRCS_DIR		= ./src/
 
 SRCS 			= $(addprefix $(SRCS_DIR),\
-				error_msg.c pipex.c )
+				error_msg.c pipex.c utils.c)
 
 all:			${NAME} ${LIBFT} 
 
@@ -54,7 +54,7 @@ update:
 	git submodule update --init --recursive --remote
 
 run:			re
-				./${NAME} 
+				./${NAME} output.txt "ls -l" "wc -l" outfile
 
 valgrind: $(NAME)
 	$(VALGRIND) ./${NAME}
