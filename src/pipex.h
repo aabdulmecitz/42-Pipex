@@ -6,7 +6,7 @@
 /*   By: aabdulmecitz <aabdulmecitz@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:00:20 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/11/30 05:27:07 by aabdulmecit      ###   ########.fr       */
+/*   Updated: 2024/12/08 00:28:09 by aabdulmecit      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 
 void    error_msg(char *msg);
 void    args_error();
-void	free_array(char **array);
+void    free_arr(char **arr);
 void	child_process(char **argv, char **envp, int *fd);
 void	free_array(char **array);
 void	execute(char *argv, char **envp);

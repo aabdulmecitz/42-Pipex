@@ -1,9 +1,1 @@
-total 48$
--rw-r--r-- 1 aabdulmecitz aabdulmecitz  1136 Nov 30 05:43 Makefile$
--rw-r--r-- 1 aabdulmecitz aabdulmecitz    11 Nov 30 01:30 README.md$
--rw-r--r-- 1 aabdulmecitz aabdulmecitz     0 Nov 30 05:41 ddd$
-drwxr-xr-x 3 aabdulmecitz aabdulmecitz  4096 Nov 30 01:30 lib$
--rwxr-xr-x 1 aabdulmecitz aabdulmecitz 26784 Nov 30 05:43 pipex$
-drwxr-xr-x 2 aabdulmecitz aabdulmecitz  4096 Nov 30 04:41 src$
--rw-r--r-- 1 aabdulmecitz aabdulmecitz    23 Nov 30 05:36 txt1.txt$
--rw-r--r-- 1 aabdulmecitz aabdulmecitz     0 Nov 30 05:43 txt2.txt$
+7
