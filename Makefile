@@ -49,6 +49,8 @@ re:				fclean all
 
 compile_libs:
 	@make -sC lib/libft
+	@make clean -sC lib/libft
+
 
 update:
 	git submodule update --init --recursive --remote
