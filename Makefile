@@ -21,11 +21,20 @@ SRCS_DIR		= ./src/
 SRCS 			= $(addprefix $(SRCS_DIR),\
 				error_msg.c pipex.c utils.c)
 
+BONUS_SRC		= $(addprefix $(SRCS_DIR),\
+				error_msg_bonus.c pipex_bonus.c utils_bonus.c)
+
 all:			${NAME} ${LIBFT} 
+all_bonus:		${NAME_BONUS} ${LIBFT} 
 
 ${NAME}: 		
 				${CC} ${SRCS} ${LIBFT} -g -o ${NAME}
 				@echo "$(NAME): $(GREEN)$(NAME) was compiled.$(RESET)"
+				@echo
+
+${NAME_BONUS}: 		
+				${CC} ${BONUS_SRC} ${LIBFT} -g -o ${NAME_BONUS}
+				@echo "$(NAME_BONUS): $(GREEN)$(NAME_BONUS) was compiled.$(RESET)"
 				@echo
 
 ${LIBFT}:
@@ -47,6 +56,8 @@ push:
 
 re:				fclean all
 
+re_bonus:		fclean all_bonus
+
 compile_libs:
 	@make -sC lib/libft
 	@make clean -sC lib/libft
@@ -57,6 +68,9 @@ update:
 
 run:			re
 				./${NAME} txt1.txt "ls -l" "wc -l" txt2.txt
+
+run_bonus:		re_bonus
+				./${NAME_BONUS} txt1.txt "ls -l"  "grep *.txt"  "wc -l" txt2.txt
 
 valgrind: $(NAME)
 	$(VALGRIND) ./${NAME}
