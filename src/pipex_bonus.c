@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabdulmecitz <aabdulmecitz@student.42.f    +#+  +:+       +#+        */
+/*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 23:17:11 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/09 16:59:42 by aabdulmecit      ###   ########.fr       */
+/*   Updated: 2024/12/13 20:29:14 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,26 @@ void parent_process(char **argv, char **envp, int *fd)
     execute(argv[3], envp);
 }
 
+void    here_doc(char **argv, char **envp)
+{
+    int fd;
+    
+    fd = open("./.here_doc", O_RDWR | O_CREAT | O_APPEND);
+    
+}
+
 int main(int argc, char **argv, char **envp)
 {
     int fd[2];
     pid_t pid;
     
-    if (argc != 5)
+    if (argc < 5)
         args_error();
     if (pipe(fd) == -1)
         error_msg("Pipe has not been started.");
+    if (ft_strncmp(argv[1], "here_doc", 8) == 0)
+        here_doc(argv, envp);
+    
     pid = fork();
     if (pid == 0)
         child_process(argv, envp, fd);
