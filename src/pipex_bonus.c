@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 23:17:11 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/13 20:29:14 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/14 22:49:56 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,23 @@ void parent_process(char **argv, char **envp, int *fd)
 void    here_doc(char **argv, char **envp)
 {
     int fd;
+    char *line;
     
-    fd = open("./.here_doc", O_RDWR | O_CREAT | O_APPEND);
+    fd = open("./.here_doc", O_RDWR | O_CREAT | O_APPEND, 0777);
+    while (1)
+    {
+        line = get_next_line(0);
+        if (!line)
+            break;
+        if (ft_strncmp(argv[1], line, 8) == 0)
+        {
+            free(line);
+            break;
+        }
+        
+        
+    }
+    
     
 }
 
