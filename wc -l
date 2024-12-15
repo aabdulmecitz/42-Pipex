@@ -1,9 +1,0 @@
-total 44
-drwxr-xr-x 3 aozkaya 2024_istanbul    19 Ara 12 16:45 lib
--rwxr-xr-x 1 aozkaya 2024_istanbul    44 Ara 14 22:37 ls -l
--rw-r--r-- 1 aozkaya 2024_istanbul  1770 Ara 14 22:29 Makefile
--rwxr-xr-x 1 aozkaya 2024_istanbul 27080 Ara 14 22:37 pipex_bonus
-drwxr-xr-x 2 aozkaya 2024_istanbul   158 Ara 14 22:18 src
--rw-r--r-- 1 aozkaya 2024_istanbul    49 Ara 12 16:45 txt1.txt
--rw-r--r-- 1 aozkaya 2024_istanbul     2 Ara 13 19:31 txt2.txt
--rwxr-xr-x 1 aozkaya 2024_istanbul     0 Ara 14 22:38 wc -l

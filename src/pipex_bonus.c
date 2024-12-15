@@ -3,83 +3,92 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aabdulmecitz <aabdulmecitz@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 23:17:11 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/14 22:49:56 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/15 03:22:36 by aabdulmecit      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft/libft.h"
 #include "./pipex_bonus.h"
 
-void child_process (char **argv, char **envp, int *fd)
-{
-    int input_fd;
-
-    input_fd = open(argv[1], O_RDONLY);
-    if (input_fd == -1)
-        error_msg("Unavalilable input file");
-    dup2(input_fd, STDIN_FILENO);
-    dup2(fd[1], STDOUT_FILENO);
-    close(fd[0]);
-    execute(argv[2], envp);
-}
-
-void parent_process(char **argv, char **envp, int *fd)
-{
-    int out_fd;
-    out_fd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-    if (out_fd == -1)
-        error_msg("Unavalilable output file");
-    dup2(fd[0], STDIN_FILENO);
-    dup2(out_fd, STDOUT_FILENO);
-    close(fd[1]);
-    execute(argv[3], envp);
-}
-
-void    here_doc(char **argv, char **envp)
-{
-    int fd;
-    char *line;
-    
-    fd = open("./.here_doc", O_RDWR | O_CREAT | O_APPEND, 0777);
-    while (1)
-    {
-        line = get_next_line(0);
-        if (!line)
-            break;
-        if (ft_strncmp(argv[1], line, 8) == 0)
-        {
-            free(line);
-            break;
-        }
-        
-        
-    }
-    
-    
-}
-
-int main(int argc, char **argv, char **envp)
+void child_process (char *argv, char **envp)
 {
     int fd[2];
     pid_t pid;
     
+    if (pipe(fd) == -1)
+        error_msg("Pipe error!");
+    pid = fork();
+    if (pid == -1)
+        error_msg("Fork error!");
+    else if (pid == 0)
+    {
+        close(fd[0]);
+        dup2(fd[1], STDOUT_FILENO);
+        execute(argv, envp);
+    }
+    else if (pid != 0)    
+    {
+        waitpid(-1, NULL, 0);
+        close(fd[1]);
+        dup2(fd[0], STDIN_FILENO);
+    }    
+}
+
+void    here_doc(char **argv)
+{
+    int fd;
+    char *line;
+    
+    fd = open("./.here_doc", O_WRONLY | O_CREAT | O_APPEND, 0777);
+    while (1)
+    {
+        line = get_next_line(0);
+        if (!line)
+            break;        
+        if (ft_strncmp(line, argv[2], ft_strlen(argv[2])) == 0)
+        {
+            free(line);
+            break;
+        }
+        ft_putstr_fd(line, fd);
+        free(line);
+    }
+    close(fd);
+    fd = open("./.here_doc", O_RDONLY);
+    dup2(fd, STDIN_FILENO);    
+}
+
+int main(int argc, char **argv, char **envp)
+{
+    int arg_index;
+    int in_file;
+    int out_file;
+    
+    arg_index = 0;
     if (argc < 5)
         args_error();
-    if (pipe(fd) == -1)
-        error_msg("Pipe has not been started.");
     if (ft_strncmp(argv[1], "here_doc", 8) == 0)
-        here_doc(argv, envp);
-    
-    pid = fork();
-    if (pid == 0)
-        child_process(argv, envp, fd);
-    if (pid == -1)
-        error_msg("Fork Error!");
-    if (pid != 0)
-        parent_process(argv, envp, fd);
+    {
+        arg_index = 3;
+        out_file = open(argv[argc - 1], O_RDONLY | O_APPEND | O_CREAT, 0777);
+        here_doc(argv);
+    }
+    else
+    {
+        arg_index = 2;
+        out_file = open(argv[argc - 1], O_WRONLY | O_TRUNC | O_CREAT, 0777);
+        in_file = open(argv[1], O_RDONLY);
+        dup2(out_file, STDIN_FILENO);
+    }
+    while (arg_index < argc - 2)
+    {
+        child_process(argv[arg_index], envp);
+        arg_index++;
+    }
+    dup2(out_file, STDOUT_FILENO);
+    execute(argv[arg_index - 2], envp);
     return (0);
-    
 }
