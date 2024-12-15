@@ -22,7 +22,7 @@ SRCS 			= $(addprefix $(SRCS_DIR),\
 				error_msg.c pipex.c utils.c)
 
 BONUS_SRC		= $(addprefix $(SRCS_DIR),\
-				error_msg_bonus.c pipex_bonus.c utils_bonus.c)
+				error_msg.c pipex_bonus.c utils.c)
 
 all:			${NAME} ${LIBFT} 
 all_bonus:		${NAME_BONUS} ${LIBFT} 
