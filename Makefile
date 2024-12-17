@@ -27,12 +27,12 @@ all:			${NAME} ${LIBFT}
 all_bonus:		${NAME_BONUS} ${LIBFT} 
 
 ${NAME}: 		
-				${CC} ${SRCS} ${LIBFT} -g -o ${NAME}
+				${CC} -Wall -Wextra -Werror ${SRCS} ${LIBFT} -g -o ${NAME}
 				@echo "$(NAME): $(GREEN)$(NAME) was compiled.$(RESET)"
 				@echo
 
 ${NAME_BONUS}: 		
-				${CC} ${BONUS_SRC} ${LIBFT} -g -o ${NAME_BONUS}
+				${CC}  -Wall -Wextra -Werror  ${BONUS_SRC} ${LIBFT} -g -o ${NAME_BONUS}
 				@echo "$(NAME_BONUS): $(GREEN)$(NAME_BONUS) was compiled.$(RESET)"
 				@echo
 

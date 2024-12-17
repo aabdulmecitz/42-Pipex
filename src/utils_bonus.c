@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 23:32:38 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/17 21:01:36 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/17 22:26:48 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Error Functions
 
-void	input_error(void)
+void	args_error(void)
 {
 	printf("%s", "$ ./pipex infile cmd1 cmd2 ... cmdn outfile\n");
 	printf("%s", "$ ./pipex here_doc LIMITER cmd1 cmd2 file\n");
@@ -39,6 +39,7 @@ char	*find_path(char *cmd, char **envp)
 	i = 0;
 	while (ft_strnstr(envp[i], "PATH=", 5) == 0 && envp[i])
 		i++;
+	
 	paths = ft_split(envp[i] + 5, ':');
 	i = 0;
 	while (paths[i])

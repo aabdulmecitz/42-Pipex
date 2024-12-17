@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:00:20 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/17 20:50:54 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/17 21:50:33 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 
 void    error_msg(char *msg);
-void    args_error();
+void	args_error(void);
 void    free_arr(char **arr);
 void	child_process(char *argv, char **envp);
 void	free_array(char **array);

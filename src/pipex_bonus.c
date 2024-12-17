@@ -6,10 +6,11 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 23:17:11 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/17 20:41:09 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/17 22:05:12 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../lib/libft/libft.h"
 #include "./pipex_bonus.h"
 
 void child_process(char *argv, char **envp)
@@ -26,7 +27,6 @@ void child_process(char *argv, char **envp)
 	{
 		close(fd[0]);
 		dup2(fd[1], STDOUT_FILENO);
-		close(fd[1]);
 		execute(argv, envp);
 	}
 	else
@@ -34,7 +34,6 @@ void child_process(char *argv, char **envp)
 		waitpid(pid, NULL, 0);
 		close(fd[1]);
 		dup2(fd[0], STDIN_FILENO);
-		close(fd[0]);
 	}
 }
 
@@ -64,7 +63,6 @@ void here_doc(char **argv)
 	if (fd == -1)
 		error_msg("here_doc temp file read error!");
 	dup2(fd, STDIN_FILENO);
-	close(fd);
 }
 
 int main(int argc, char **argv, char **envp)
@@ -85,13 +83,15 @@ int main(int argc, char **argv, char **envp)
 	{
 		arg_index = 2;
 		in_file = open(argv[1], O_RDONLY);
+		if (in_file == -1)
+			error_msg("There is no valid file.");
 		dup2(in_file, STDIN_FILENO);
-		close(in_file);
 		out_file = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+		if (out_file == -1)
+			error_msg("Output file error.");
 	}
 	while (arg_index < argc - 2)
 		child_process(argv[arg_index++], envp);
 	dup2(out_file, STDOUT_FILENO);
-	close(out_file);
 	return (execute(argv[arg_index], envp), 0);
 }
