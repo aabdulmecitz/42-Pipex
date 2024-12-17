@@ -18,10 +18,10 @@ REMOVE 			= rm -f
 SRCS_DIR		= ./src/
 
 SRCS 			= $(addprefix $(SRCS_DIR),\
-				error_msg.c pipex.c utils.c)
+				pipex.c utils.c)
 
 BONUS_SRC		= $(addprefix $(SRCS_DIR),\
-				error_msg.c pipex_bonus.c utils.c)
+				pipex_bonus.c utils.c)
 
 all:			${NAME} ${LIBFT} 
 all_bonus:		${NAME_BONUS} ${LIBFT} 

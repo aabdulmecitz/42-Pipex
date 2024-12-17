@@ -6,11 +6,31 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 23:32:38 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/17 20:41:29 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/17 20:45:19 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./pipex.h"
+
+// Error Functions
+
+void    error_msg(char *msg)
+{
+	ft_printf(RED"ERROR:\n%s\n"RESET, msg);
+	exit(EXIT_FAILURE);
+}
+
+void    args_error()
+{
+	ft_printf(RED"%s"RESET, "************* ERROR **************\n");
+	ft_printf(RED"%s"RESET, "$ ./pipex infile cmd1 cmd2 outfile\n");
+	ft_printf(RED"%s"RESET, "               OR                 \n");
+	ft_printf(RED"%s"RESET, "$ ./pipex_bonus infile cmd1 cmd2 ... cmdn outfile\n");
+	ft_printf(RED"%s"RESET, "$ ./pipex_bonus here_doc LIMITER cmd1 cmd2 file\n");
+	exit(EXIT_FAILURE);
+}
+
+// Exect Functions
 
 char	*find_path(char *cmd, char **envp)
 {

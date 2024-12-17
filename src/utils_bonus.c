@@ -6,11 +6,13 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 23:32:38 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/17 20:40:45 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/17 20:44:01 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./pipex_bonus.h"
+
+// Error Functions
 
 void	input_error(void)
 {
@@ -24,6 +26,8 @@ void	error(char *error_message)
 	perror(error_message);
 	exit(EXIT_FAILURE);
 }
+
+// Exect Functions
 
 char	*find_path(char *cmd, char **envp)
 {
