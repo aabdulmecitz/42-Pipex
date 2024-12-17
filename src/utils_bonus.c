@@ -6,13 +6,12 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 23:32:38 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/17 18:00:10 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/17 18:04:49 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft/libft.h"
 #include "./pipex_bonus.h"
-
 
 void	input_error(void)
 {
