@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 23:17:11 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/17 22:05:12 by aozkaya          ###   ########.fr       */
+/*   Created: 2024/12/17 22:37:40 by aozkaya           #+#    #+#             */
+/*   Updated: 2024/12/17 22:37:48 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lib/libft/libft.h"
 #include "./pipex_bonus.h"
 
 void child_process(char *argv, char **envp)
