@@ -6,11 +6,10 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 23:32:38 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/17 18:01:13 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/17 20:41:29 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lib/libft/libft.h"
 #include "./pipex.h"
 
 char	*find_path(char *cmd, char **envp)

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabdulmecitz <aabdulmecitz@student.42.f    +#+  +:+       +#+        */
+/*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:39:36 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/15 04:22:30 by aabdulmecit      ###   ########.fr       */
+/*   Updated: 2024/12/17 20:41:14 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include "../lib/libft/libft.h"
 
 void    error_msg(char *msg)
 {

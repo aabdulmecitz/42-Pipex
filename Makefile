@@ -11,8 +11,7 @@ CC 				= cc
 
 STANDARD_FLAGS 	= -Wall -Werror -Wextra
 
-VALGRIND		= @valgrind --leak-check=full --show-leak-kinds=all \
---track-origins=yes --quiet --tool=memcheck --keep-debuginfo=yes
+VALGRIND		= @valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --quiet --tool=memcheck --keep-debuginfo=yes
 
 REMOVE 			= rm -f
 
@@ -78,8 +77,8 @@ run_bonus_here_doc:		re_bonus
 run_bonus:		re_bonus
 				./${NAME_BONUS} txt1.txt "ls -l"  "wc -l"  "cat -e" txt2.txt
 
-valgrind: $(NAME)
-	$(VALGRIND) ./${NAME}
+valgrind:
+	$(VALGRIND) ./pipex txt1.txt "ls -l" "wc -l" txt2.txt
 
 
 .PHONY:			all clean fclean re rebonus valgrind run run_bonus makefile
