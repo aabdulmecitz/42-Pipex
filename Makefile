@@ -69,7 +69,7 @@ run:			re
 				./${NAME} txt1.txt "ls -l" "wc -l" txt2.txt
 
 run_bonus:		re_bonus
-				./${NAME_BONUS} txt1.txt "ls -l"  "grep *.txt"  "wc -l" txt2.txt
+				./${NAME_BONUS} txt1.txt "ls -l"  "wc -l"  "cat -e" txt2.txt
 
 run_bonus_here_doc:		re_bonus
 				./${NAME_BONUS} txt1.txt here_doc LIMITER "ls -l"  "grep *.txt"  "wc -l" txt2.txt
