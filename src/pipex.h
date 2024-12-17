@@ -6,19 +6,19 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:00:20 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/17 20:44:58 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/17 20:47:30 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
+# include "../lib/libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/wait.h>
 # include <sys/types.h>
 # include <fcntl.h>
-# include "../lib/libft/libft.h"
 
 # define GREEN				"\033[0;32m"
 # define RED 				"\033[1;31m"

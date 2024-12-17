@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabdulmecitz <aabdulmecitz@student.42.f    +#+  +:+       +#+        */
+/*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:00:20 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/15 04:23:32 by aabdulmecit      ###   ########.fr       */
+/*   Updated: 2024/12/17 20:47:44 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <string.h>
-# include <stdio.h>
 # include <sys/wait.h>
 # include <sys/types.h>
 # include <fcntl.h>
