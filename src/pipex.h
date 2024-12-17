@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:00:20 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/17 20:47:30 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/17 20:49:20 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include "../lib/libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
-# include <sys/wait.h>
-# include <sys/types.h>
 # include <fcntl.h>
 
 # define GREEN				"\033[0;32m"
