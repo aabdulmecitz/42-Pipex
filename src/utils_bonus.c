@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 22:38:30 by aozkaya           #+#    #+#             */
-/*   Updated: 2024/12/17 22:38:33 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/17 22:40:07 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	args_error(void)
 	exit(EXIT_FAILURE);
 }
 
-void	error(char *error_message)
+void    error_msg(char *msg)
 {
-	perror(error_message);
+	ft_printf(RED"ERROR:\n%s\n"RESET, msg);
 	exit(EXIT_FAILURE);
 }
 
@@ -68,7 +68,7 @@ void	execute(char *argv, char **envp)
 
 	cmd = ft_split(argv, ' ');
 	if (!cmd)
-		error("Command splitting failed");
+		error_msg("Command splitting failed");
 	path = find_path(cmd[0], envp);
 	if (!path)
 	{
@@ -76,7 +76,7 @@ void	execute(char *argv, char **envp)
 		while (cmd[++i])
 			free(cmd[i]);
 		free(cmd);
-		error("Command not found in PATH");
+		error_msg("Command not found in PATH");
 	}
 	i = -1;
 	result = execve(path, cmd, envp);
@@ -85,5 +85,5 @@ void	execute(char *argv, char **envp)
 		free(cmd[i]);
 	free(cmd);
 	if (result == -1)
-		error("execve failed");
+		error_msg("execve failed");
 }
