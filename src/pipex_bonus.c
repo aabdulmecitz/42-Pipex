@@ -6,16 +6,16 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 22:37:40 by aozkaya           #+#    #+#             */
-/*   Updated: 2024/12/17 22:37:48 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/17 22:58:45 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./pipex_bonus.h"
 
-void child_process(char *argv, char **envp)
+void	child_process(char *argv, char **envp)
 {
-	int fd[2];
-	pid_t pid;
+	int		fd[2];
+	pid_t	pid;
 
 	if (pipe(fd) == -1)
 		error_msg("Pipe error!");
@@ -36,10 +36,10 @@ void child_process(char *argv, char **envp)
 	}
 }
 
-void here_doc(char **argv)
+void	here_doc(char **argv)
 {
-	int fd;
-	char *line;
+	int		fd;
+	char	*line;
 
 	fd = open("./.here_doc", O_WRONLY | O_CREAT | O_APPEND, 0777);
 	if (fd == -1)
@@ -48,11 +48,11 @@ void here_doc(char **argv)
 	{
 		line = get_next_line(0);
 		if (!line)
-			break;
+			break ;
 		if (ft_strncmp(line, argv[2], ft_strlen(argv[2])) == 0)
 		{
 			free(line);
-			break;
+			break ;
 		}
 		ft_putstr_fd(line, fd);
 		free(line);
@@ -64,11 +64,11 @@ void here_doc(char **argv)
 	dup2(fd, STDIN_FILENO);
 }
 
-int main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
-	int arg_index;
-	int in_file;
-	int out_file;
+	int	arg_index;
+	int	in_file;
+	int	out_file;
 
 	if (argc < 5)
 		args_error();
@@ -82,12 +82,10 @@ int main(int argc, char **argv, char **envp)
 	{
 		arg_index = 2;
 		in_file = open(argv[1], O_RDONLY);
-		if (in_file == -1)
-			error_msg("There is no valid file.");
 		dup2(in_file, STDIN_FILENO);
 		out_file = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-		if (out_file == -1)
-			error_msg("Output file error.");
+		if (out_file == -1 || in_file == -1)
+			error_msg("There is no valid file.");
 	}
 	while (arg_index < argc - 2)
 		child_process(argv[arg_index++], envp);

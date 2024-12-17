@@ -6,15 +6,15 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 22:38:06 by aozkaya           #+#    #+#             */
-/*   Updated: 2024/12/17 22:38:08 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/17 22:48:24 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./pipex.h"
 
-void child_process (char **argv, char **envp, int *fd)
+void	child_process(char **argv, char **envp, int *fd)
 {
-	int input_fd;
+	int	input_fd;
 
 	input_fd = open(argv[1], O_RDONLY);
 	if (input_fd == -1)
@@ -25,9 +25,10 @@ void child_process (char **argv, char **envp, int *fd)
 	execute(argv[2], envp);
 }
 
-void parent_process(char **argv, char **envp, int *fd)
+void	parent_process(char **argv, char **envp, int *fd)
 {
-	int out_fd;
+	int	out_fd;
+
 	out_fd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (out_fd == -1)
 		error_msg("Unavalilable output file");
@@ -37,11 +38,11 @@ void parent_process(char **argv, char **envp, int *fd)
 	execute(argv[3], envp);
 }
 
-int main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
-	int fd[2];
-	pid_t pid;
-	
+	int		fd[2];
+	pid_t	pid;
+
 	if (argc != 5)
 		args_error();
 	if (pipe(fd) == -1)
@@ -54,5 +55,4 @@ int main(int argc, char **argv, char **envp)
 	if (pid != 0)
 		parent_process(argv, envp, fd);
 	return (0);
-	
 }

@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 22:38:17 by aozkaya           #+#    #+#             */
-/*   Updated: 2024/12/17 22:38:19 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/17 22:49:22 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@
 # define CYAN				"\033[1;96m"
 # define RESET 				"\033[0m"
 
-
-void    error_msg(char *msg);
-void    args_error();
-void    free_arr(char **arr);
+void	error_msg(char *msg);
+void	args_error(void);
+void	free_arr(char **arr);
 void	child_process(char **argv, char **envp, int *fd);
 void	free_array(char **array);
 void	execute(char *argv, char **envp);

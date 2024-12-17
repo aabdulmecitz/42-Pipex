@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 22:38:30 by aozkaya           #+#    #+#             */
-/*   Updated: 2024/12/17 22:40:07 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/17 23:02:32 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	args_error(void)
 	exit(EXIT_FAILURE);
 }
 
-void    error_msg(char *msg)
+void	error_msg(char *msg)
 {
 	ft_printf(RED"ERROR:\n%s\n"RESET, msg);
 	exit(EXIT_FAILURE);
@@ -39,7 +39,6 @@ char	*find_path(char *cmd, char **envp)
 	i = 0;
 	while (ft_strnstr(envp[i], "PATH=", 5) == 0 && envp[i])
 		i++;
-	
 	paths = ft_split(envp[i] + 5, ':');
 	i = 0;
 	while (paths[i])
@@ -55,8 +54,7 @@ char	*find_path(char *cmd, char **envp)
 	i = -1;
 	while (paths[++i])
 		free(paths[i]);
-	free(paths);
-	return (path);
+	return (free(paths), path);
 }
 
 void	execute(char *argv, char **envp)
