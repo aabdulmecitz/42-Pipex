@@ -3,81 +3,70 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabdulmecitz <aabdulmecitz@student.42.f    +#+  +:+       +#+        */
+/*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 23:32:38 by aabdulmecit       #+#    #+#             */
-/*   Updated: 2024/12/08 00:40:41 by aabdulmecit      ###   ########.fr       */
+/*   Updated: 2024/12/17 18:01:13 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft/libft.h"
 #include "./pipex.h"
 
+char	*find_path(char *cmd, char **envp)
+{
+	int		i;
+	char	**paths;
+	char	*path;
+	char	*path_part;
+
+	i = 0;
+	while (ft_strnstr(envp[i], "PATH=", 5) == 0 && envp[i])
+		i++;
+	paths = ft_split(envp[i] + 5, ':');
+	i = 0;
+	while (paths[i])
+	{
+		path_part = ft_strjoin(paths[i], "/");
+		path = ft_strjoin(path_part, cmd);
+		free(path_part);
+		if (access(path, F_OK) == 0)
+			break ;
+		free(path);
+		i++;
+	}
+	i = -1;
+	while (paths[++i])
+		free(paths[i]);
+	free(paths);
+	return (path);
+}
 
 void	execute(char *argv, char **envp)
 {
-    char **cmd;
-    char *path;
-    int res;
-    cmd = ft_split(argv, ' ');
-    if (!cmd)
-        error_msg("command couldn't split!");
-    path = find_valid_path(cmd[0], envp);
+	char	**cmd;
+	char	*path;
+	int		result;
+	int		i;
 
-    if (!path)
-        error_msg("command not found in PATH");
-    res = execve(path, cmd, envp);
-}
-
-char    *find_valid_path(char *cmd, char **envp)
-{
-    char *the_path;
-    char **paths;
-    int i;
-    char *tmp;
-
-    i = 0;
-    while (ft_strnstr(envp[i], "PATH", 4) == 0 && envp[i])
-        i++;
-    tmp = ft_substr(envp[i], 5, ft_strlen(envp[i]) - 5);
-    paths = ft_split(envp[i], ':');
-    if (!*paths || !paths)
-        error_msg("Error on the creating path");
-    free(tmp);
-    i = 0;
-    while (paths[i])
-    {
-        the_path = make_path(paths[i], cmd);
-        if (the_path != NULL)
-            break;
-        i++;
-    }
-
-    free_arr(paths);
-    return(the_path);
-}
-
-char    *make_path(char *uncomplated_path, char *cmd)
-{
-    char *tmp;
-    char *path;
-
-    tmp = ft_strjoin(uncomplated_path, "/");
-    if (!tmp)
-        error_msg("The path couldnt be done.");
-    path = ft_strjoin(tmp, cmd);
-    free(tmp);
-    if (access(path, F_OK) < 0)
-        return NULL;
-    return path;
-}
-
-void    free_arr(char **arr)
-{
-    int i;
-
-    i = 0;
-    while (arr[i++])
-        free(arr[i]);
-    free(arr);
+	cmd = ft_split(argv, ' ');
+	if (!cmd)
+		error_msg("Command splitting failed");
+	path = find_path(cmd[0], envp);
+	if (!path)
+	{
+		i = -1;
+		while (cmd[++i])
+			free(cmd[i]);
+		free(cmd);
+		error_msg("Command not found in PATH");
+	}
+	i = -1;
+	result = execve(path, cmd, envp);
+	free(path);
+	while (cmd[++i])
+		free(cmd[i]);
+	free(cmd);
+	if (result == -1)
+		error_msg("execve failed");
 }

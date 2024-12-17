@@ -1,1 +1,8 @@
-0
+total 40$
+drwxr-xr-x 3 aozkaya 2024_istanbul    19 Ara 17 17:59 lib$
+-rw-r--r-- 1 aozkaya 2024_istanbul  1758 Ara 17 17:59 Makefile$
+-rwxr-xr-x 1 aozkaya 2024_istanbul   134 Ara 17 17:59 outfile.txt$
+-rwxr-xr-x 1 aozkaya 2024_istanbul 27272 Ara 17 18:01 pipex_bonus$
+drwxr-xr-x 2 aozkaya 2024_istanbul   133 Ara 17 17:59 src$
+-rw-r--r-- 1 aozkaya 2024_istanbul    49 Ara 17 17:59 txt1.txt$
+-rw-r--r-- 1 aozkaya 2024_istanbul     0 Ara 17 18:03 txt2.txt$
