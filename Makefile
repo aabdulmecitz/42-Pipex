@@ -65,18 +65,6 @@ compile_libs:
 update:
 	git submodule update --init --recursive --remote
 
-run:			re
-				./${NAME} txt1.txt "ls -l" "wc -l" txt2.txt
-
-run_bonus:		re_bonus
-				./${NAME_BONUS} txt1.txt "ls -l"  "wc -l"  "cat -e" txt2.txt
-
-run_bonus_here_doc:		re_bonus
-				./${NAME_BONUS} txt1.txt here_doc LIMITER "ls -l"  "wc -l"  "cat -e" txt2.txt
-
-run_bonus:		re_bonus
-				./${NAME_BONUS} txt1.txt "ls -l"  "wc -l"  "cat -e" txt2.txt
-
 valgrind:
 	$(VALGRIND) ./pipex txt1.txt "ls -l" "wc -l" txt2.txt
 
@@ -84,7 +72,9 @@ valgrind:
 .PHONY:			all clean fclean re rebonus valgrind run makefile
 
 #./pipex txt1.txt "ls -l" "wc -l" txt2.txt
-#
+#./pipex_bonus txt1.txt "ls -l" "wc -l" "cat -e" txt2.txt
+#./pipex_bonus here_doc "ls -l" "wc -l" txt2.txt
+
 #
 #
 #
