@@ -24,7 +24,7 @@ BONUS_SRC		= $(addprefix $(SRCS_DIR),\
 				pipex_bonus.c utils_bonus.c)
 
 all:			${NAME} ${LIBFT} 
-all_bonus:		${NAME_BONUS} ${LIBFT} 
+bonus:		${NAME_BONUS} ${LIBFT} 
 
 ${NAME}: 		
 				${CC} -Wall -Wextra -Werror ${SRCS} ${LIBFT} -g -o ${NAME}
