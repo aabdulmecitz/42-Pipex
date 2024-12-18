@@ -82,3 +82,9 @@ valgrind:
 
 
 .PHONY:			all clean fclean re rebonus valgrind run run_bonus makefile
+
+#./pipex txt1.txt "ls -l" "wc -l" txt2.txt
+#
+#
+#
+#
