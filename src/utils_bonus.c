@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 22:38:30 by aozkaya           #+#    #+#             */
-/*   Updated: 2024/12/17 23:02:32 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/18 17:15:29 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 void	args_error(void)
 {
-	printf("%s", "$ ./pipex infile cmd1 cmd2 ... cmdn outfile\n");
-	printf("%s", "$ ./pipex here_doc LIMITER cmd1 cmd2 file\n");
+	ft_printf("%s", "$ ./pipex infile cmd1 cmd2 ... cmdn outfile\n");
+	ft_printf("%s", "$ ./pipex here_doc LIMITER cmd1 cmd2 file\n");
 	exit(EXIT_FAILURE);
 }
 
