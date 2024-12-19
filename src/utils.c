@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 22:38:42 by aozkaya           #+#    #+#             */
-/*   Updated: 2024/12/17 23:01:14 by aozkaya          ###   ########.fr       */
+/*   Updated: 2024/12/19 15:24:32 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	args_error(void)
 	ft_printf(RED"%s"RESET, "$ ./pipex infile cmd1 cmd2 outfile\n");
 	ft_printf(RED"%s"RESET, "               OR                 \n");
 	ft_printf(RED"%s"RESET,
-		"$ ./pipex_bonus infile cmd1 cmd2 ... cmdn outfile\n");
+		"$ ./pipex infile cmd1 cmd2 ... cmdn outfile\n");
 	ft_printf(RED"%s"RESET,
-		"$ ./pipex_bonus here_doc LIMITER cmd1 cmd2 file\n");
+		"$ ./pipex here_doc LIMITER cmd1 cmd2 file\n");
 	exit(EXIT_FAILURE);
 }
 
