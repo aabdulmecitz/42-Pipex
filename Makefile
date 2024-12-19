@@ -9,10 +9,6 @@ LIBFT 			= lib/libft/libft.a
 
 CC 				= cc
 
-STANDARD_FLAGS 	= -Wall -Werror -Wextra
-
-VALGRIND		= @valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --quiet --tool=memcheck --keep-debuginfo=yes
-
 REMOVE 			= rm -f
 
 SRCS_DIR		= ./src/
@@ -74,7 +70,3 @@ valgrind:
 #./pipex txt1.txt "ls -l" "wc -l" txt2.txt
 #./pipex_bonus txt1.txt "ls -l" "wc -l" "cat -e" txt2.txt
 #./pipex_bonus here_doc "ls -l" "wc -l" txt2.txt
-
-#
-#
-#
