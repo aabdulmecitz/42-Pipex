@@ -1,5 +1,5 @@
 NAME			= pipex
-NAME_BONUS		= pipex_bonus
+NAME_BONUS		= pipex
 
 GREEN			= \033[0;32m
 RED				= \033[0;31m
@@ -23,13 +23,13 @@ SRCS 			= $(addprefix $(SRCS_DIR),\
 BONUS_SRC		= $(addprefix $(SRCS_DIR),\
 				pipex_bonus.c utils_bonus.c)
 
-all:			${NAME} ${LIBFT} 
-bonus:		${NAME_BONUS} ${LIBFT} 
-
 ${NAME}: 		
 				${CC} -Wall -Wextra -Werror ${SRCS} ${LIBFT} -g -o ${NAME}
 				@echo "$(NAME): $(GREEN)$(NAME) was compiled.$(RESET)"
 				@echo
+
+all:			${NAME} ${LIBFT} 
+bonus:			${NAME_BONUS} ${LIBFT} 
 
 ${NAME_BONUS}: 		
 				${CC}  -Wall -Wextra -Werror  ${BONUS_SRC} ${LIBFT} -g -o ${NAME_BONUS}
